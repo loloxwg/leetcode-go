@@ -1,21 +1,24 @@
 package __20
 
 //33. 搜索旋转排序数组
+
+//二分查找
 func search(nums []int, target int) int {
 	l, r := 0, len(nums)-1
 	for l <= r {
-		mid := 1 + (r-1)>>1
+		mid := (l + r) / 2
 		if nums[mid] == target {
 			return mid
-		} else if nums[mid] >= nums[0] {
+		}
+		if nums[mid] >= nums[l] {
 			//左边有序
-			if nums[0] <= target && target <= nums[mid] {
+			if nums[l] <= target && target < nums[mid] {
 				r = mid - 1
 			} else {
 				l = mid + 1
 			}
 		} else {
-			if nums[mid] <= target && target <= nums[len(nums)-1] {
+			if nums[mid] < target && target <= nums[r] {
 				l = mid + 1
 			} else {
 				r = mid - 1
