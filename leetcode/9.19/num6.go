@@ -23,3 +23,13 @@ func tribonacci(n int) int {
 	return s
 
 }
+func tribonacci2(n int) int {
+	if n == 0 {
+		return 0
+	}
+	if n <= 2 {
+		return 1
+	}
+	return tribonacci2(n-1) + tribonacci2(n-2) + tribonacci2(n-3)
+
+}
